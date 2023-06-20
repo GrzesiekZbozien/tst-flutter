@@ -1,0 +1,5 @@
+#include "Pods/Target Support Files/Pods-test1Target/Pods-test1Target.debug.xcconfig"
+#include "../../Flutter/Generated.xcconfig"
+FLUTTER_TARGET=lib/main_test1.dart
+ASSET_PREFIX=test1
+BUNDLE_NAME=Test1

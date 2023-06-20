@@ -1,0 +1,56 @@
+include:
+  - path: ios_templates_project.yml
+    relativePaths: false
+name: Runner
+options: 
+  bundleIdPrefix: com.example
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  platform: iOS
+  type: application
+configs:
+  Debug-test1: debug
+  Release-test1: release
+  # New flavor here
+  Debug-test2: debug
+  Release-test2: release
+targets:
+  test1Target:
+    templates:
+      - iosFutterTargetTemplate
+    templateAttributes:
+      flavor: test1
+      bundleIdentifier: com.example.test1
+      executableName: Test1
+      marketingVersion: "0.4.0"
+      buildNumber: "1"
+      developmentTeam: "44ER6A4954"
+      debugProfisioningProfile: "test1 Dev"
+      releaseProfisioningProfile: "test1 In House"
+  # New flavor here
+  test2Target:
+    templates:
+      - iosFutterTargetTemplate
+    templateAttributes:
+      flavor: test2
+      bundleIdentifier: com.example.test2
+      executableName: Test2
+      marketingVersion: "0.4.0"
+      buildNumber: "1"
+      developmentTeam: "44ER6A4954"
+      debugProfisioningProfile: "test2 Dev"
+      releaseProfisioningProfile: "test2 In House"
+schemes:
+  test1:
+    templates:
+      - iosFutterSchemeTemplate
+    templateAttributes:
+      flavor: test1
+  # New flavor here
+  test2:
+    templates:
+      - iosFutterSchemeTemplate
+    templateAttributes:
+      flavor: test2

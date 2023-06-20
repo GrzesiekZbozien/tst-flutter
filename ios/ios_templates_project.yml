@@ -1,0 +1,40 @@
+targetTemplates:
+  iosFutterTargetTemplate:
+    configFiles:
+      Debug-${flavor}: Runner/${flavor}/${flavor}Debug.xcconfig
+      Release-${flavor}: Runner/${flavor}/${flavor}Release.xcconfig
+    settings:
+      base:
+        SWIFT_OBJC_BRIDGING_HEADER:
+          - Runner/Runner-Bridging-Header.h
+        PRODUCT_BUNDLE_IDENTIFIER: ${bundleIdentifier}
+        EXECUTABLE_NAME: ${executableName}
+        MARKETING_VERSION: ${marketingVersion}
+        CURRENT_PROJECT_VERSION: ${buildNumber}
+        DEVELOPMENT_TEAM: ${developmentTeam}
+        ENABLE_BITCODE: 'NO'
+        IPHONEOS_DEPLOYMENT_TARGET: '15.0'
+      configs:
+        Debug-${flavor}:
+          PROVISIONING_PROFILE_SPECIFIER: ${debugProfisioningProfile}
+        release-${flavor}:
+          PROVISIONING_PROFILE_SPECIFIER: ${releaseProfisioningProfile}
+    preBuildScripts:
+      - path: phase_scripts/run_scripts.sh
+        name: Run Script
+    postBuildScripts:
+      - path: phase_scripts/thin_binary.sh
+        name: Thin Binary
+    platform: iOS
+    type: application
+    sources:
+      - path: Runner
+      - path: Flutter/AppFrameworkInfo.plist
+      - path: Flutter/Generated.xcconfig
+      - path: Flutter/Debug.xcconfig
+      - path: Flutter/Release.xcconfig
+schemeTemplates:
+  iosFutterSchemeTemplate:
+    build:
+      targets:
+        ${flavor}Target: all
