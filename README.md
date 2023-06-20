@@ -4,13 +4,12 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is created for issue 
+https://github.com/Dart-Code/Dart-Code/issues/4593
 
-A few resources to get you started if this is your first Flutter project:
+### How to reproduce
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* To generate project run: ```sh xcodegen.sh```
+* Then use TEST1 from [launch.json](.vscode/launch.json)
+* App gets stuck with 
+    ```[        ] Waiting for VM Service port to be available...```
